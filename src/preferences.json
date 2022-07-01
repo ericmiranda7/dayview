@@ -1,0 +1,80 @@
+{
+    "regions": [
+        {
+            "name": "Computer Science",
+            "subjects": [
+                {
+                    "name": "Fundamentals",
+                    "topics": [
+                        "DS",
+                        "CS51 Abstraction",
+                        "Computer Science Overview Book",
+                        "Discrete Math"
+                    ]
+                },
+                {
+                    "name": "Security",
+                    "topics": [
+                        "Wargames",
+                        "MoocFi Cybersecurity"
+                    ]
+                },
+                {
+                    "name": "Work",
+                    "topics": [
+                        "Spring ICIN Backend",
+                        "Uncle Bob Book",
+                        "Docker"
+                    ]
+                },
+                {
+                    "name": "Linux",
+                    "topics": [
+                        "Bash Academy"
+                    ]
+                },
+                {
+                    "name": "AI/ML",
+                    "topics": [
+                        "Linear Algebra"
+                    ]
+                },
+                {
+                    "name": "Implementations / Projects",
+                    "topics": [
+                        "LC!",
+                        "RPi Temperature Sensor"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Recreational",
+            "subjects": [
+                {
+                    "name": "Physical",
+                    "topics": [
+                        "Gym",
+                        "Run",
+                        "Skateboard"
+                    ]
+                },
+                {
+                    "name": "Cooking",
+                    "topics": [
+                        "Survival",
+                        "Recreational"
+                    ]
+                },
+                {
+                    "name": "Reading",
+                    "topics": [
+                        "Philosophy",
+                        "History",
+                        "Fiction"
+                    ]
+                }
+            ]
+        }
+    ]
+}

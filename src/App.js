@@ -1,24 +1,30 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import DayView from './components/DayView';
+import Container from 'react-bootstrap/Container'
+import Button from 'react-bootstrap/Button'
 
 function App() {
+  const [regionScores, setRegionScores] = useState({})
+  const [dayType, setDayType] = useState('')
+  console.log(dayType)
+
+  useEffect(() => {
+    const dayStats = Object.entries(regionScores)
+      .reduce((p, c) => {
+        if (p[1] === undefined || p[1] < c[1]) return [c[0], c[1]]
+        else return [...p]
+      }, [])
+    if (dayStats[1] !== 0) setDayType(dayStats[0])
+  }, [regionScores])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <DayView setRegionScores={setRegionScores} />
+      <h2 className="mt-2" style={{ color: 'green', textAlign: 'center' }}>
+        Today's been a very {dayType}-ey day
+      </h2>
+    </Container>
   );
 }
 
