@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import DayView from './components/DayView';
 import Container from 'react-bootstrap/Container'
-import Button from 'react-bootstrap/Button'
 
 function App() {
   const [regionScores, setRegionScores] = useState({})
