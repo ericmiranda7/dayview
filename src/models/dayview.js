@@ -1,18 +1,18 @@
 export default class DayView {
-  regionArray
+  regions
 
   constructor(regions) {
-    this.regionArray = regions;
+    this.regions = regions;
   }
 }
 
 export class Region {
   regionName
-  subjectArray
+  subjects
 
   constructor(regionName, subjects) {
     this.regionName = regionName
-    this.subjectArray = subjects;
+    this.subjects = subjects;
   }
 }
 

@@ -1,21 +1,34 @@
-import DayView, { Region, Subject } from "../models/dayview"
 import data from '../preferences.json'
 
-export const generateDayView = () => {
-  // return new DayView([compsciRegion, recreationalRegion])
-  const regions = [];
+let RUN = 0;
 
-  data.regions.forEach(({ name: regionName, subjects: subjectArray }) => {
-    const subjects = [];
+export const generateDayViewInitialState = () => {
+  if (RUN) return;
+  RUN = 1
 
-    subjectArray.forEach(({ name: subjectName, topics: topicArray }) => {
-      subjects.push(new Subject(subjectName, topicArray))
+  Object.entries(data.regions)
+    .forEach(([regionName, subject]) => {
+      Object.entries(subject)
+        .forEach(([subjectName, topics]) => {
+          const topicsObject = {};
+          topics
+            .forEach(t => topicsObject[t] = false)
+          data.regions[regionName][subjectName] = topicsObject;
+        })
     })
 
-    regions.push(new Region(regionName, subjects))
+  return data;
+}
 
-  })
+export const getDayViewFromDb = async () => {
 
-  return new DayView(regions)
+  const res = await fetch('.netlify/functions/persist-db', { method: 'GET' })
+  let data = null
 
+  if (res.status === 200) {
+    data = await res.json();
+    console.log('201', data)
+  }
+
+  return data
 }

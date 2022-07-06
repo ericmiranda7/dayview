@@ -1,30 +1,15 @@
 import Subject from "./Subject"
-import { useState, useEffect } from "react"
 
-const Region = ({ name, subjectArray, setRegionStats }) => {
-  const [subjectCompletion, setSubjectCompletion] = useState({})
-  console.log('rr', subjectCompletion)
-
-  useEffect(() => {
-    if (Object.keys(subjectCompletion).length === 0) return
-
-    const regionName = Object.keys(subjectCompletion)[0]
-    const subjectCompletionPercentages = Object.values(subjectCompletion)[0]
-
-    setRegionStats(prevState => {
-      return {
-        ...prevState,
-        [regionName]: subjectCompletionPercentages
-      }
-    })
-  }, [subjectCompletion, name, setRegionStats])
-
+const Region = ({ name, subjects, dispatch }) => {
   return (
     <div>
       <h2 style={{ color: 'red' }}>
         {name}
       </h2>
-      {subjectArray.map(s => <Subject key={s.subjectName} name={s.subjectName} regionName={name} topics={s.topicArray} setCompletion={setSubjectCompletion} />)}
+      {
+        Object.entries(subjects)
+          .map(([sKey, sVal]) => <Subject key={sKey} name={sKey} regionName={name} topics={sVal} topicsArray={Object.keys(sVal)} dispatch={dispatch} />)
+      }
     </div>
   )
 }
